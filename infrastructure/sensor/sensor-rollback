@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Lockout protection. setup-sensor.sh arms a timer that runs this 15 minutes
+# after the lockdown. Unless `sensor-confirm` ran (proving the admin port
+# works), it undoes the firewall and sshd changes so port 22 reaches the real
+# sshd again. Cowrie is stopped too: without the firewall it would have egress.
+set -u
+
+if [[ -f /var/lib/sensor/confirmed ]]; then
+  exit 0
+fi
+
+systemctl disable --now cowrie
+nft flush ruleset
+systemctl disable nftables
+rm -f /etc/ssh/sshd_config.d/00-sensor.conf
+systemctl restart ssh
+logger -t sensor "lockdown NOT confirmed: rolled back firewall and sshd; cowrie stopped"

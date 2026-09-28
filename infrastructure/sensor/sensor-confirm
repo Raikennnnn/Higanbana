@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Run over the NEW admin port after setup-sensor.sh to keep the lockdown.
+set -euo pipefail
+mkdir -p /var/lib/sensor
+touch /var/lib/sensor/confirmed
+systemctl stop sensor-rollback.timer 2>/dev/null || true
+logger -t sensor "lockdown confirmed"
+echo "confirmed: rollback timer cancelled"

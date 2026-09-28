@@ -1,0 +1,11 @@
+.env
+infrastructure/sensor/sensor.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local Cowrie logs and generated data (real attacker data never goes in git)
+var/
+sample-data/*
+!sample-data/.gitkeep

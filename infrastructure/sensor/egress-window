@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Temporarily allow outbound traffic for maintenance (apt, pip, time sync).
+#
+#   sudo egress-window open [MINUTES]   # default 20, max 120; closes itself
+#   sudo egress-window close
+#   sudo egress-window status
+#
+# Cowrie is stopped while egress is open, so attackers never get a working
+# network path out of the sensor.
+set -euo pipefail
+
+timer_unit=egress-window-close
+
+close_window() {
+  nft flush chain inet sensor maintenance
+  systemctl stop "${timer_unit}.timer" 2>/dev/null || true
+  systemctl start cowrie
+  logger -t sensor "egress window closed; cowrie started"
+  echo "egress closed, cowrie running"
+}
+
+case "${1:-status}" in
+  open)
+    mins="${2:-20}"
+    if ! [[ $mins =~ ^[0-9]+$ ]] || (( mins < 1 || mins > 120 )); then
+      echo "minutes must be 1-120" >&2
+      exit 1
+    fi
+    systemctl stop cowrie
+    systemctl stop "${timer_unit}.timer" 2>/dev/null || true
+    nft flush chain inet sensor maintenance
+    nft add rule inet sensor maintenance 'meta l4proto { tcp, udp } th dport 53 accept'
+    nft add rule inet sensor maintenance 'tcp dport { 80, 443 } accept'
+    nft add rule inet sensor maintenance 'udp dport 123 accept'
+    systemd-run --quiet --collect --unit="$timer_unit" --on-active="${mins}m" \
+      /usr/local/sbin/egress-window close
+    logger -t sensor "egress window opened for ${mins} min; cowrie stopped"
+    echo "egress OPEN for ${mins} min (cowrie stopped). Run 'egress-window close' when done."
+    ;;
+  close)
+    close_window
+    ;;
+  status)
+    nft list chain inet sensor maintenance
+    systemctl list-timers "${timer_unit}*" --no-pager || true
+    systemctl is-active cowrie || true
+    ;;
+  *)
+    echo "usage: egress-window open [MINUTES] | close | status" >&2
+    exit 1
+    ;;
+esac

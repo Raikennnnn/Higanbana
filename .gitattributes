@@ -1,0 +1,3 @@
+# Scripts run on Linux: never convert them to CRLF, even when committed from Windows.
+*.sh text eol=lf
+infrastructure/sensor/* text eol=lf

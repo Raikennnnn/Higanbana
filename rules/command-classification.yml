@@ -1,0 +1,83 @@
+# Behaviour rules. A session gets a label when a rule matches.
+#
+# Principles:
+# - Explainable: every rule has an evidence sentence a reader can check.
+# - Conservative: if nothing fits cleanly, the session stays unlabelled.
+#   Don't force an ATT&CK mapping.
+# - match.type:
+#     command        -> Python regex tested against each command the attacker ran
+#     failed_logins  -> number of failed logins in the session is >= min
+#     event          -> the session logged cowrie event `eventid` at least `min` times
+version: 1
+rules:
+  - id: auth-brute-force
+    label: Brute force
+    attack: T1110
+    confidence: high
+    match: {type: failed_logins, min: 3}
+    evidence: Three or more failed logins in a single session.
+
+  - id: discovery-system-info
+    label: System discovery
+    attack: T1082
+    confidence: high
+    match: {type: command, regex: '\b(uname|lscpu|nproc|free\s+-m|df\s+-h)\b|/proc/cpuinfo'}
+    evidence: Ran commands that report OS, CPU, memory or disk details.
+
+  - id: discovery-owner-user
+    label: User discovery
+    attack: T1033
+    confidence: medium
+    match: {type: command, regex: '(^|[;&|]\s*)(whoami|id|w)(\s|$|;)'}
+    evidence: Checked which user the session is running as.
+
+  - id: discovery-local-accounts
+    label: Account discovery
+    attack: T1087.001
+    confidence: high
+    match: {type: command, regex: '/etc/(passwd|shadow)|\bgetent\s+passwd\b'}
+    evidence: Read the local account list.
+
+  - id: discovery-network-config
+    label: Network discovery
+    attack: T1016
+    confidence: high
+    match: {type: command, regex: '\b(ifconfig|ip\s+(a|addr|route)|route\s+-n|netstat)\b'}
+    evidence: Listed network interfaces or routes.
+
+  - id: persistence-ssh-authorized-keys
+    label: SSH key persistence
+    attack: T1098.004
+    confidence: high
+    match: {type: command, regex: '\.ssh/authorized_keys'}
+    evidence: Wrote to an SSH authorized_keys file.
+
+  - id: persistence-cron
+    label: Cron persistence
+    attack: T1053.003
+    confidence: high
+    # crontab -e, "... | crontab -", or "crontab <file>"; not crontab -l (read-only)
+    match: {type: command, regex: '\bcrontab\s+(-e\b|-(\s|$)|[^-\s])|/etc/cron'}
+    evidence: Installed or edited a cron job.
+
+  - id: credential-change
+    label: Password change
+    attack: T1098
+    confidence: medium
+    # passwd as a command with an argument; not the /etc/passwd file
+    match: {type: command, regex: '\bchpasswd\b|(^|[;&|]\s*)passwd\s+\S'}
+    evidence: Tried to change an account password.
+
+  - id: tool-transfer
+    label: Tool transfer attempt
+    attack: T1105
+    confidence: high
+    match: {type: command, regex: '\b(wget|curl|tftp|ftpget)\b'}
+    evidence: Tried to download a file onto the honeypot (on our own sensor this always fails; it has no egress).
+
+  - id: proxy-port-forwarding
+    label: Proxy attempt
+    attack: T1090
+    confidence: high
+    match: {type: event, eventid: cowrie.direct-tcpip.request, min: 1}
+    evidence: Asked the SSH server to open a connection to another host (port forwarding), trying to use it as a proxy.
