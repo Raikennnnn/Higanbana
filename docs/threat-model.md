@@ -34,6 +34,9 @@ victims (many "attacker" IPs are compromised machines).
 - **TB3**, home PC to third-party APIs: I send attacker IPs and URLs out; API
   keys live only on the home PC.
 - **TB4**, private to public: only allowlisted aggregate fields leave.
+- **TB5**, third-party feed to public: a GitHub Actions job fetches DShield
+  aggregates and publishes them to the `data` branch, which the portfolio reads.
+  The feed is external input, and the job runs with write access to the repo.
 
 ## Assets
 
@@ -65,6 +68,9 @@ victims (many "attacker" IPs are compromised machines).
 | T13 | **Provider reclaims idle VM** or closes the account after abuse reports | none | Rebuild script; frequent pulls; AUP reviewed; respond to abuse reports within 24h | Medium (accepted) |
 | T14 | **API key leak** via the public repo | TB3 | Keys only in `.env` (git-ignored); secret scanning on GitHub | Low |
 | T15 | Admin SSH **brute-forced** | TB1 | Key-only, high port, allowlisted source IP at the cloud firewall | Low |
+| T16 | **Malicious or malformed feed data** (DShield's username list contains attacker-sent strings) | TB5 | Strict validation in `collector/dshield.py` (charset allowlist, size caps, type checks); a bad response fails the run and the last good summary stays; the portfolio validates again before rendering | Low |
+| T17 | **Compromised CI supply chain** pushes bad data or code | TB5 | Actions pinned to full commit SHAs; no third-party packages installed; `contents: write` only; runs on schedule or by hand, never on pull requests; no secrets | Low |
+| T18 | **Feed disappears or changes** (DShield is best-effort) | TB5 | The job fails without overwriting; the portfolio shows the data date so stale data is visible | Medium (accepted) |
 
 ## Data classification
 

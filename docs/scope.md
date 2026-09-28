@@ -36,6 +36,7 @@ The sensor is disposable. The data and the analysis are the product.
 | Behaviour rules | YAML, applied by the classifier | `rules/`, `collector/classifier.py` |
 | Public summary | Static `summary.json`, published with the portfolio site | `collector/export.py` |
 | Public dataset import | Same pipeline as the sensor | `collector/datasets.py` |
+| Live layer | GitHub Actions, daily; publishes to the `data` branch | `collector/dshield.py`, `.github/workflows/dshield-live.yml` |
 
 The public summary is a static file rather than a live API: it's delayed and
 aggregated anyway, so there's no server to host, rate-limit or protect.
@@ -45,6 +46,9 @@ aggregated anyway, so there's no server to host, rate-limit or protect.
 - **Own sensor:** Cowrie JSON logs pulled from the VM.
 - **Public datasets:** the CyberLab honeynet dataset (CC BY 4.0). It runs through
   the same pipeline and is labelled as such wherever it's shown.
+- **Live feed:** SANS Internet Storm Center / DShield daily aggregates
+  (CC BY-NC-SA 4.0): SSH attack volume, most attacked ports, and a username
+  ranking. No IP addresses are fetched.
 
 ## In scope
 

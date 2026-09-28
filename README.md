@@ -9,9 +9,13 @@ to MITRE ATT&CK, and an aggregated, sanitized public summary. Built to run at
 rice fields and graves because their bulbs are poisonous. The bright border
 invites pests in and protects what lies behind it, the way a honeypot does.
 
-> Status: the pipeline runs end to end on a **public honeynet dataset** (below).
-> The hardened sensor is built and firewall-tested (`infrastructure/sensor/`) and
-> goes live when cloud hosting is available.
+Three data layers go through the same kind of processing:
+
+| Layer | Source | Updates |
+|---|---|---|
+| **Live** | SANS Internet Storm Center (DShield) aggregates | Daily, by GitHub Actions |
+| **Deep analysis** | The public CyberLab honeynet dataset, run through the parser, ATT&CK rules and export | Fixed snapshot |
+| **Own sensor** | Hardened Cowrie sensor (`infrastructure/sensor/`), built and firewall-tested | Plugs into the same pipeline |
 
 ## Docs
 
@@ -67,10 +71,31 @@ curl.exe -L -o sample-data/cyberlab-2019-05-18.jsonl https://raw.githubuserconte
 
 The export is what the portfolio widget shows (`Ken_Portfolio/content/honeypot-summary.json`).
 
+## Live layer: SANS ISC DShield
+
+`collector/dshield.py` fetches DShield's daily aggregates: SSH (port 22)
+reports and attacking IPs over the last 30 days, the most attacked ports, and a
+ranking of usernames seen by DShield's honeypots. No IP addresses are fetched,
+and every field is validated. A bad response fails the run instead of
+overwriting the last good summary.
+
+[`.github/workflows/dshield-live.yml`](.github/workflows/dshield-live.yml) runs
+it daily and publishes `dshield/summary.json` to the
+[`data` branch](../../tree/data), which the portfolio reads.
+
+```powershell
+.\.venv\Scripts\python -m collector.dshield --out sample-data/dshield-summary.json
+```
+
+> Data: [SANS Internet Storm Center / DShield](https://isc.sans.edu), licensed
+> [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The
+> published summary is derived from it and shared under the same license.
+
 ## Layout
 
 ```
-collector/       parser, loader, classifier, export, dataset importer, synthetic generator, schema.sql
+collector/       parser, loader, classifier, export, dataset importer, DShield feed, synthetic generator, schema.sql
+.github/         daily workflow for the DShield live layer
 rules/           behaviour rules mapped to MITRE ATT&CK
 infrastructure/  sensor provisioning (Ubuntu 24.04) + firewall test
 tests/           unit tests (+ DB integration tests)

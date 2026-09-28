@@ -1,0 +1,52 @@
+name: DShield live feed
+
+# Once a day: fetch SANS ISC DShield aggregates, build summary.json and publish
+# it to the `data` branch, which the portfolio reads. If the feed fails
+# validation nothing is written, so the last good summary stays published.
+#
+# Runs only on a schedule or by hand (never on pull requests), uses no
+# secrets, and pins every third-party action to a full commit SHA.
+
+on:
+  schedule:
+    - cron: "23 6 * * *" # 06:23 UTC, after DShield's day has closed
+  workflow_dispatch:
+
+permissions:
+  contents: write # only to push the data branch
+
+concurrency:
+  group: dshield-live
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check out the data branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: published
+
+      - name: Build summary (standard library only, nothing to install)
+        run: python3 -m collector.dshield --out published/dshield/summary.json
+
+      - name: Publish if changed
+        working-directory: published
+        run: |
+          git add dshield/summary.json
+          if git diff --cached --quiet; then
+            echo "No change since the last run."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "DShield summary for $(jq -r .date dshield/summary.json)"
+          git push origin HEAD:data
