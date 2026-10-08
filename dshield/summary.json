@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-07T13:36:41Z",
+  "generated_at": "2026-10-08T13:42:45Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "ssh": {
-    "reports": 424598,
-    "sources": 8565,
-    "targets": 270,
+    "reports": 371158,
+    "sources": 7671,
+    "targets": 277,
     "rank": 4
   },
   "ssh_history": [
-    {
-      "date": "2026-09-08",
-      "reports": 2377242,
-      "sources": 29505
-    },
     {
       "date": "2026-09-09",
       "reports": 1666442,
@@ -161,58 +156,63 @@
     },
     {
       "date": "2026-10-07",
-      "reports": 424598,
-      "sources": 8565
+      "reports": 1911134,
+      "sources": 28913
+    },
+    {
+      "date": "2026-10-08",
+      "reports": 371158,
+      "sources": 7671
     }
   ],
   "top_ports": [
     {
       "port": 80,
       "service": "HTTP",
-      "reports": 680504,
-      "sources": 6469
-    },
-    {
-      "port": 8080,
-      "service": "HTTP (alt)",
-      "reports": 494727,
-      "sources": 5167
+      "reports": 531704,
+      "sources": 6319
     },
     {
       "port": 443,
       "service": "HTTPS",
-      "reports": 474454,
-      "sources": 5425
+      "reports": 415220,
+      "sources": 4690
+    },
+    {
+      "port": 8080,
+      "service": "HTTP (alt)",
+      "reports": 374001,
+      "sources": 4425
     },
     {
       "port": 22,
       "service": "SSH",
-      "reports": 424598,
-      "sources": 8565
+      "reports": 371158,
+      "sources": 7671
     },
     {
       "port": 8000,
       "service": "HTTP (alt)",
-      "reports": 370643,
-      "sources": 3599
+      "reports": 324012,
+      "sources": 3489
     },
     {
       "port": 23,
       "service": "Telnet",
-      "reports": 250248,
-      "sources": 7805
+      "reports": 245046,
+      "sources": 7531
     },
     {
       "port": 2222,
       "service": "SSH (alt)",
-      "reports": 124542,
-      "sources": 5329
+      "reports": 123010,
+      "sources": 5183
     },
     {
-      "port": 9000,
+      "port": 16767,
       "service": null,
-      "reports": 74271,
-      "sources": 2866
+      "reports": 46119,
+      "sources": 2606
     }
   ],
   "top_usernames": [
