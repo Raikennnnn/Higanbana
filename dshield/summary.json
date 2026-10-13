@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-12T15:44:07Z",
+  "generated_at": "2026-10-13T14:23:19Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "ssh": {
-    "reports": 472016,
-    "sources": 9069,
-    "targets": 267,
-    "rank": 5
+    "reports": 389606,
+    "sources": 10696,
+    "targets": 265,
+    "rank": 4
   },
   "ssh_history": [
-    {
-      "date": "2026-09-13",
-      "reports": 3632213,
-      "sources": 22718
-    },
     {
       "date": "2026-09-14",
       "reports": 1600669,
@@ -161,58 +156,63 @@
     },
     {
       "date": "2026-10-12",
-      "reports": 472016,
-      "sources": 9069
+      "reports": 1019295,
+      "sources": 17027
+    },
+    {
+      "date": "2026-10-13",
+      "reports": 389606,
+      "sources": 10696
     }
   ],
   "top_ports": [
     {
+      "port": 80,
+      "service": "HTTP",
+      "reports": 535887,
+      "sources": 10244
+    },
+    {
       "port": 443,
       "service": "HTTPS",
-      "reports": 1159442,
-      "sources": 8294
+      "reports": 512668,
+      "sources": 6631
     },
     {
       "port": 8080,
       "service": "HTTP (alt)",
-      "reports": 904689,
-      "sources": 7254
-    },
-    {
-      "port": 8000,
-      "service": "HTTP (alt)",
-      "reports": 714452,
-      "sources": 3397
-    },
-    {
-      "port": 80,
-      "service": "HTTP",
-      "reports": 659214,
-      "sources": 7484
+      "reports": 445618,
+      "sources": 7726
     },
     {
       "port": 22,
       "service": "SSH",
-      "reports": 472016,
-      "sources": 9069
+      "reports": 389606,
+      "sources": 10696
+    },
+    {
+      "port": 8000,
+      "service": "HTTP (alt)",
+      "reports": 380554,
+      "sources": 6646
     },
     {
       "port": 23,
       "service": "Telnet",
-      "reports": 361288,
-      "sources": 9757
+      "reports": 251949,
+      "sources": 9733
     },
     {
       "port": 2222,
       "service": "SSH (alt)",
-      "reports": 117813,
-      "sources": 5783
+      "reports": 113117,
+      "sources": 5171
     },
     {
       "port": 51413,
       "service": null,
-      "reports": 94764,
-      "sources": 3841
+      "reports": 69139,
+      "sources": 2958
     }
   ],
   "top_usernames": [
