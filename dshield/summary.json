@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-06T14:25:32Z",
+  "generated_at": "2026-11-07T13:17:44Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "ssh": {
-    "reports": 242925,
-    "sources": 7729,
-    "targets": 288,
-    "rank": 2
+    "reports": 389093,
+    "sources": 6841,
+    "targets": 290,
+    "rank": 1
   },
   "ssh_history": [
-    {
-      "date": "2026-10-08",
-      "reports": 1595972,
-      "sources": 21615
-    },
     {
       "date": "2026-10-09",
       "reports": 1797251,
@@ -161,58 +156,63 @@
     },
     {
       "date": "2026-11-06",
-      "reports": 242925,
-      "sources": 7729
+      "reports": 1234369,
+      "sources": 19172
+    },
+    {
+      "date": "2026-11-07",
+      "reports": 389093,
+      "sources": 6841
     }
   ],
   "top_ports": [
     {
-      "port": 161,
-      "service": null,
-      "reports": 332942,
-      "sources": 842
-    },
-    {
       "port": 22,
       "service": "SSH",
-      "reports": 242925,
-      "sources": 7729
+      "reports": 389093,
+      "sources": 6841
     },
     {
-      "port": 443,
-      "service": "HTTPS",
-      "reports": 215303,
-      "sources": 8641
-    },
-    {
-      "port": 8080,
-      "service": "HTTP (alt)",
-      "reports": 192745,
-      "sources": 4991
+      "port": 161,
+      "service": null,
+      "reports": 204701,
+      "sources": 917
     },
     {
       "port": 23,
       "service": "Telnet",
-      "reports": 160759,
-      "sources": 7716
+      "reports": 150479,
+      "sources": 7874
     },
     {
-      "port": 80,
-      "service": "HTTP",
-      "reports": 155468,
-      "sources": 5789
-    },
-    {
-      "port": 8000,
-      "service": "HTTP (alt)",
-      "reports": 155440,
-      "sources": 4165
+      "port": 2222,
+      "service": "SSH (alt)",
+      "reports": 143109,
+      "sources": 5651
     },
     {
       "port": 3389,
       "service": "RDP",
-      "reports": 112009,
-      "sources": 1391
+      "reports": 114398,
+      "sources": 1368
+    },
+    {
+      "port": 443,
+      "service": "HTTPS",
+      "reports": 103542,
+      "sources": 12600
+    },
+    {
+      "port": 80,
+      "service": "HTTP",
+      "reports": 89274,
+      "sources": 13033
+    },
+    {
+      "port": 8080,
+      "service": "HTTP (alt)",
+      "reports": 50851,
+      "sources": 3651
     }
   ],
   "top_usernames": [
