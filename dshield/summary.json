@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-07T13:17:44Z",
+  "generated_at": "2026-11-08T13:38:26Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "ssh": {
-    "reports": 389093,
-    "sources": 6841,
-    "targets": 290,
+    "reports": 336225,
+    "sources": 7863,
+    "targets": 285,
     "rank": 1
   },
   "ssh_history": [
-    {
-      "date": "2026-10-09",
-      "reports": 1797251,
-      "sources": 24108
-    },
     {
       "date": "2026-10-10",
       "reports": 1290814,
@@ -161,58 +156,63 @@
     },
     {
       "date": "2026-11-07",
-      "reports": 389093,
-      "sources": 6841
+      "reports": 1712403,
+      "sources": 21099
+    },
+    {
+      "date": "2026-11-08",
+      "reports": 336225,
+      "sources": 7863
     }
   ],
   "top_ports": [
     {
       "port": 22,
       "service": "SSH",
-      "reports": 389093,
-      "sources": 6841
+      "reports": 336225,
+      "sources": 7863
     },
     {
       "port": 161,
       "service": null,
-      "reports": 204701,
-      "sources": 917
+      "reports": 222647,
+      "sources": 541
     },
     {
       "port": 23,
       "service": "Telnet",
-      "reports": 150479,
-      "sources": 7874
-    },
-    {
-      "port": 2222,
-      "service": "SSH (alt)",
-      "reports": 143109,
-      "sources": 5651
-    },
-    {
-      "port": 3389,
-      "service": "RDP",
-      "reports": 114398,
-      "sources": 1368
+      "reports": 168825,
+      "sources": 8040
     },
     {
       "port": 443,
       "service": "HTTPS",
-      "reports": 103542,
-      "sources": 12600
+      "reports": 151982,
+      "sources": 8545
     },
     {
-      "port": 80,
-      "service": "HTTP",
-      "reports": 89274,
-      "sources": 13033
+      "port": 3389,
+      "service": "RDP",
+      "reports": 120695,
+      "sources": 1814
+    },
+    {
+      "port": 8000,
+      "service": "HTTP (alt)",
+      "reports": 102388,
+      "sources": 3577
     },
     {
       "port": 8080,
       "service": "HTTP (alt)",
-      "reports": 50851,
-      "sources": 3651
+      "reports": 93514,
+      "sources": 4423
+    },
+    {
+      "port": 9000,
+      "service": null,
+      "reports": 83358,
+      "sources": 2705
     }
   ],
   "top_usernames": [
