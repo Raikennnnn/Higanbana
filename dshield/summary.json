@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-11T14:33:26Z",
+  "generated_at": "2026-11-12T15:26:31Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "ssh": {
-    "reports": 343102,
-    "sources": 8330,
-    "targets": 298,
-    "rank": 1
+    "reports": 385267,
+    "sources": 9392,
+    "targets": 303,
+    "rank": 3
   },
   "ssh_history": [
-    {
-      "date": "2026-10-13",
-      "reports": 1802707,
-      "sources": 24451
-    },
     {
       "date": "2026-10-14",
       "reports": 1302903,
@@ -161,58 +156,63 @@
     },
     {
       "date": "2026-11-11",
-      "reports": 343102,
-      "sources": 8330
+      "reports": 1427499,
+      "sources": 23038
+    },
+    {
+      "date": "2026-11-12",
+      "reports": 385267,
+      "sources": 9392
     }
   ],
   "top_ports": [
     {
-      "port": 22,
-      "service": "SSH",
-      "reports": 343102,
-      "sources": 8330
+      "port": 8000,
+      "service": "HTTP (alt)",
+      "reports": 405391,
+      "sources": 5840
     },
     {
       "port": 8080,
       "service": "HTTP (alt)",
-      "reports": 153222,
-      "sources": 5306
+      "reports": 394981,
+      "sources": 6900
     },
     {
-      "port": 23,
-      "service": "Telnet",
-      "reports": 153041,
-      "sources": 7507
-    },
-    {
-      "port": 443,
-      "service": "HTTPS",
-      "reports": 134249,
-      "sources": 8790
-    },
-    {
-      "port": 3389,
-      "service": "RDP",
-      "reports": 128092,
-      "sources": 1472
-    },
-    {
-      "port": 8000,
-      "service": "HTTP (alt)",
-      "reports": 125115,
-      "sources": 4664
+      "port": 22,
+      "service": "SSH",
+      "reports": 385267,
+      "sources": 9392
     },
     {
       "port": 80,
       "service": "HTTP",
-      "reports": 105511,
-      "sources": 6935
+      "reports": 141971,
+      "sources": 8811
     },
     {
-      "port": 51413,
+      "port": 23,
+      "service": "Telnet",
+      "reports": 133839,
+      "sources": 6860
+    },
+    {
+      "port": 3389,
+      "service": "RDP",
+      "reports": 124987,
+      "sources": 1158
+    },
+    {
+      "port": 9000,
       "service": null,
-      "reports": 99928,
-      "sources": 4462
+      "reports": 119209,
+      "sources": 2251
+    },
+    {
+      "port": 443,
+      "service": "HTTPS",
+      "reports": 116273,
+      "sources": 10216
     }
   ],
   "top_usernames": [
