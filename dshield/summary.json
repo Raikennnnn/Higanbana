@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-23T18:28:53Z",
+  "generated_at": "2026-11-24T17:56:50Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "ssh": {
-    "reports": 770717,
-    "sources": 9410,
-    "targets": 310,
-    "rank": 2
+    "reports": 429927,
+    "sources": 7511,
+    "targets": 300,
+    "rank": 1
   },
   "ssh_history": [
-    {
-      "date": "2026-10-25",
-      "reports": 857335,
-      "sources": 13249
-    },
     {
       "date": "2026-10-26",
       "reports": 1627889,
@@ -163,56 +158,61 @@
       "date": "2026-11-23",
       "reports": 770717,
       "sources": 9410
+    },
+    {
+      "date": "2026-11-24",
+      "reports": 429927,
+      "sources": 7511
     }
   ],
   "top_ports": [
     {
-      "port": 23,
-      "service": "Telnet",
-      "reports": 1009514,
-      "sources": 12026
-    },
-    {
       "port": 22,
       "service": "SSH",
-      "reports": 770717,
-      "sources": 9410
-    },
-    {
-      "port": 2222,
-      "service": "SSH (alt)",
-      "reports": 466631,
-      "sources": 7502
+      "reports": 429927,
+      "sources": 7511
     },
     {
       "port": 443,
       "service": "HTTPS",
-      "reports": 389042,
-      "sources": 24682
+      "reports": 368056,
+      "sources": 13672
+    },
+    {
+      "port": 2222,
+      "service": "SSH (alt)",
+      "reports": 243302,
+      "sources": 6251
+    },
+    {
+      "port": 23,
+      "service": "Telnet",
+      "reports": 196272,
+      "sources": 8263
     },
     {
       "port": 8080,
       "service": "HTTP (alt)",
-      "reports": 279382,
-      "sources": 6908
+      "reports": 189791,
+      "sources": 4370
     },
     {
       "port": 8000,
       "service": "HTTP (alt)",
-      "reports": 237216,
-      "sources": 4727
+      "reports": 188270,
+      "sources": 3713
     },
     {
       "port": 9000,
       "service": null,
-      "reports": 202714,
-      "sources": 3770
+      "reports": 144967,
+      "sources": 2771
     },
     {
-      "port": 16767,
-      "service": null,
-      "reports": 185328,
-      "sources": 5143
+      "port": 5555,
+      "service": "Android ADB",
+      "reports": 117055,
+      "sources": 2064
     }
   ],
   "top_usernames": [
