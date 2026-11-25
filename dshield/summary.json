@@ -1,24 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-24T17:56:50Z",
+  "generated_at": "2026-11-25T17:24:55Z",
   "source": {
     "name": "SANS Internet Storm Center (DShield)",
     "url": "https://isc.sans.edu",
     "license": "CC BY-NC-SA 4.0"
   },
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "ssh": {
-    "reports": 429927,
-    "sources": 7511,
-    "targets": 300,
-    "rank": 1
+    "reports": 503426,
+    "sources": 9917,
+    "targets": 301,
+    "rank": 2
   },
   "ssh_history": [
-    {
-      "date": "2026-10-26",
-      "reports": 1627889,
-      "sources": 24746
-    },
     {
       "date": "2026-10-27",
       "reports": 1868098,
@@ -161,58 +156,63 @@
     },
     {
       "date": "2026-11-24",
-      "reports": 429927,
-      "sources": 7511
+      "reports": 767110,
+      "sources": 13140
+    },
+    {
+      "date": "2026-11-25",
+      "reports": 503426,
+      "sources": 9917
     }
   ],
   "top_ports": [
     {
-      "port": 22,
-      "service": "SSH",
-      "reports": 429927,
-      "sources": 7511
-    },
-    {
       "port": 443,
       "service": "HTTPS",
-      "reports": 368056,
-      "sources": 13672
+      "reports": 708367,
+      "sources": 20033
     },
     {
-      "port": 2222,
-      "service": "SSH (alt)",
-      "reports": 243302,
-      "sources": 6251
+      "port": 22,
+      "service": "SSH",
+      "reports": 503426,
+      "sources": 9917
     },
     {
       "port": 23,
       "service": "Telnet",
-      "reports": 196272,
-      "sources": 8263
+      "reports": 215428,
+      "sources": 10078
+    },
+    {
+      "port": 2222,
+      "service": "SSH (alt)",
+      "reports": 210895,
+      "sources": 5662
     },
     {
       "port": 8080,
       "service": "HTTP (alt)",
-      "reports": 189791,
-      "sources": 4370
+      "reports": 186981,
+      "sources": 5705
     },
     {
       "port": 8000,
       "service": "HTTP (alt)",
-      "reports": 188270,
-      "sources": 3713
+      "reports": 167184,
+      "sources": 4772
     },
     {
-      "port": 9000,
+      "port": 16767,
       "service": null,
-      "reports": 144967,
-      "sources": 2771
+      "reports": 154314,
+      "sources": 5161
     },
     {
-      "port": 5555,
-      "service": "Android ADB",
-      "reports": 117055,
-      "sources": 2064
+      "port": 80,
+      "service": "HTTP",
+      "reports": 142553,
+      "sources": 8410
     }
   ],
   "top_usernames": [
